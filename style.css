@@ -1,31 +1,10 @@
-/* --------------------------------------- CONTENTS ----------------------------------------------
-
-MOBILE 
-
-TYPOGRAPHY (LINE 40)
-HEADER (110)
-MAIN (151)
-FOOTER (206)
-NAV (238)
-
---------
-
-DESKTOP 
-
-TYPOGRAPHY (LINE 291)
-HEADER (321)
-MAIN (388)
-FOOTER (481)
-
------------------------------------------------------------------------------------------------ */
-
 @import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-size: 15px
+    font-size: 0.938rem
 }
 
 :root {
@@ -51,7 +30,7 @@ nav>ul>li {
 
 h1 {
     color: var(--White);
-    font-size: 2.45rem;
+    font-size: clamp(1.4rem, 0.0967rem + 10.4261vw, 4rem);
 }
 
 main {
@@ -104,55 +83,87 @@ nav>ul>li>a {
     opacity: .8;
 }
 
-
 /* LAYOUT */
 
 /* ---- HEADER-LAYOUT-MOBILE ---- */
 
-
 header {
-    background: top left url(./images/mobile/image-hero.jpg) no-repeat;
-    background-size: 100%;
-}
-
-header {
-    padding: 2.65rem 1.5rem;
-}
-
-#mobileHeader {
+    position: absolute;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    padding: 10vw 5vw;
 }
 
-#mobileHeader>a>img {
-    height: 1.95rem;
-    width: auto;
-    position: relative;
-    z-index: 3;
+header>a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+header>a>svg {
+    max-width: 10rem;
 }
 
 #hamburger {
     background: center center url(./images/icon-hamburger.svg) no-repeat transparent;
-    width: 2rem;
-    height: 2rem;
+    min-width: 2rem;
+    aspect-ratio: 1;
+    margin-left: auto;
     border: none;
     position: relative;
     z-index: 3;
 }
 
-h1 {
-    margin: 10.5rem 0 12.5rem 0;
-    border: 2px solid var(--White);
-    padding: 1.5rem 3rem 1.5rem 1.5rem;
+nav {
+    background-color: var(--Black);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100vw);
+    width: 100%;
+    min-height: 100vh;
+    z-index: 2;
+    transition: transform ease-in-out .7s;
+    padding: 15rem 1.5rem;
+}
+
+.navOpen {
+    transform: translateX(0%);
+}
+
+nav>ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero-section {
     position: relative;
-    z-index: 1;
+    padding: 5vw;
+}
+
+.hero-section img {
+    position: absolute;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+h1 {
+    margin-top: 60%;
+    text-align: left;
+    padding: 8%;
+    width: min-content;
+    width: 100%;
+    border: 2px solid var(--White);
 }
 
 /* ---- MAIN-LAYOUT-MOBILE ---- */
 
-main {
-    padding: 6rem 1.5rem;
-}
+
 
 h2 {
     margin-top: 2.75rem;
@@ -235,38 +246,11 @@ footer>div:last-of-type>ul {
     margin-bottom: 1rem;
 }
 
-/* ---- NAV-LAYOUT-MOBILE ----  */
-
-nav {
-    background-color: var(--Black);
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 2;
-    transition: left ease-in-out .7s;
-    padding: 15rem 1.5rem;
-}
-
-nav>ul {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-#hamburger.close {
-    background: center center url(./images/icon-close.svg) no-repeat;
-}
 
 /* ---- MOBILE-DEFAULTS ----  */
 
 .fixed {
     position: fixed;
-}
-
-.open {
-    left: 0;
 }
 
 li {
@@ -286,7 +270,7 @@ a {
 }
 
 /* DESKTOP */
-@media (min-width: 376px) {
+@media (min-width: 29.688rem) {
 
     /* TYPOGRAPHY */
 
@@ -295,13 +279,16 @@ a {
         color: var(--White);
         text-transform: capitalize;
         font-weight: 400;
-        font-size: 1rem;
+        font-size: clamp(0.4rem, 0.0506rem + 1.177vw, 2rem);
     }
 
     h1 {
         color: var(--White);
-        font-size: 4.6rem;
+        /* font-size: clamp(1rem, 0.2138rem + 2.6483vw, 4.6rem); */
+        font-size: 4.3rem;
     }
+
+
 
     .main-p-div {
         text-align: left;
@@ -320,7 +307,59 @@ a {
 
     /* ---- HEADER-LAYOUT-DESKTOP ---- */
 
-    header::after {
+    header {
+        padding-top: 5%;
+        padding-inline: 9%;
+    }
+
+    header>a>svg {
+        max-width: clamp(5rem, 0.0777rem + 16.5803vw, 15rem);
+    }
+
+    #hamburger {
+        display: none;
+    }
+
+    nav {
+        position: static;
+        min-height: min-content;
+        min-width: min-content;
+        margin-left: auto;
+        padding: 0;
+        transform: none;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        background-color: transparent;
+    }
+
+    nav>ul {
+        gap: clamp(1rem, 0.5632rem + 1.4713vw, 3rem);
+    }
+
+    /* main */
+
+    .hero-section {
+        padding-inline: 9%;
+    }
+
+    h1 {
+        margin-top: 13%;
+        padding: 0;
+
+        /* line-height: 95%; */
+    }
+
+    .hero-section>img {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    /* header::after {
         content: '';
         inset: 0;
         position: absolute;
@@ -328,47 +367,16 @@ a {
         height: 87%;
         background-color: var(--Dark-Gray);
         mix-blend-mode: multiply;
-    }
+    } */
 
-    header {
-        background: top left url(./images/desktop/image-hero.jpg) no-repeat;
-        background-size: contain;
-        position: relative;
-        padding-top: 4rem;
-        padding-left: 10.3rem;
-        padding-right: 9.5rem;
-    }
 
-    #headerDiv {
-        display: flex;
-        justify-content: space-between;
-    }
 
-    #headerDiv>a {
-        position: relative;
-    }
-
-    nav {
-        position: static;
-        inset: 0;
-        min-height: min-content;
-        width: fit-content;
-        padding: 0;
-        background-color: transparent;
-        z-index: 1;
-    }
 
     nav>ul {
         flex-direction: row;
 
     }
 
-    h1 {
-        width: 58%;
-        margin-top: 7.75rem;
-        padding: 2rem 4rem 1.25rem 2rem;
-        opacity: 1;
-    }
 
     ul>li>a::after {
         display: block;
@@ -388,8 +396,8 @@ a {
     /* ---- MAIN-LAYOUT-DESKTOP ---- */
 
     main {
-        padding: 10.3rem;
-        padding-top: 4rem;
+        /* padding: 10.3rem;
+        padding-top: 4rem; */
     }
 
     .main-pic-p-div {
