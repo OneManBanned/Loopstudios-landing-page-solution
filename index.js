@@ -1,9 +1,25 @@
 const button = document.querySelector('#hamburger')
 const nav = document.querySelector('nav')
-const body = document.querySelector('body')
+const links = document.querySelectorAll('nav ul li')
 const { classList } = nav
 
 button.onclick = () => toggleMenu()
+window.onresize = () => resetNavState()
+window.onload = () => resetNavState()
+links.forEach((link, index) => {
+    if (window.innerWidth < 476 && index === 0) {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 476 && classList.contains('navOpen')) {
+                resetNavState()
+            }
+        })
+    }
+})
+console.log(window.innerWidth)
+// refresh to top of page
+
+window.location.hash = ''
+history.scrollRestoration = 'manual'
 
 function toggleMenu() {
     classList.toggle('navOpen')
@@ -14,6 +30,7 @@ function toggleMenu() {
     }
 }
 
-// button.classList.toggle('open')
-// nav.classList.toggle('open')
-// body.classList.toggle('fixed')
+const resetNavState = () => {
+    classList.remove('navOpen')
+    button.style.background = 'center center url(./images/icon-hamburger.svg) no-repeat transparent'
+}
