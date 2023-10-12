@@ -3,23 +3,13 @@ const nav = document.querySelector('nav')
 const links = document.querySelectorAll('nav ul li')
 const { classList } = nav
 
-button.onclick = () => toggleMenu()
-window.onresize = () => resetNavState()
-window.onload = () => resetNavState()
-links.forEach((link, index) => {
-    if (window.innerWidth < 476 && index === 0) {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 476 && classList.contains('navOpen')) {
-                resetNavState()
-            }
-        })
-    }
-})
-console.log(window.innerWidth)
-// refresh to top of page
+if (classList.contains('navOpen')) {
+    window.onresize = () => toggleMenu()
+    window.onload = () => toggleMenu()
+}
 
-window.location.hash = ''
-history.scrollRestoration = 'manual'
+button.onclick = () => toggleMenu()
+window.onscroll = () => { if (classList.contains('navOpen')) toggleMenu() }
 
 function toggleMenu() {
     classList.toggle('navOpen')
@@ -28,9 +18,4 @@ function toggleMenu() {
     } else {
         button.style.background = 'center center url(./images/icon-hamburger.svg) no-repeat transparent'
     }
-}
-
-const resetNavState = () => {
-    classList.remove('navOpen')
-    button.style.background = 'center center url(./images/icon-hamburger.svg) no-repeat transparent'
 }
