@@ -18,8 +18,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: https://www.frontendmentor.io/solutions/loopstudios-landing-page-solution-5HjFxG0hBu
+- Live Site URL: https://onemanbanned.github.io/Loopstudios-landing-page-solution/
 
 ### Built with
 
